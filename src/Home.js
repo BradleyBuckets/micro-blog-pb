@@ -3,8 +3,6 @@ import BlogList from "./BlogList";
 import PocketBase from "pocketbase";
 
 const pb = new PocketBase("https://square-potato.pockethost.io");
-// import useFetch from "./useFetch";
-// const { data: blogs, isLoading } = useFetch("http://localhost:8000/blogs");
 
 const Home = () => {
   let [blogPosts, setBlogPosts] = useState([]);
@@ -13,17 +11,13 @@ const Home = () => {
 
   useEffect(() => {
     const posts = async () => {
-      console.log("getting the posts...");
       const records = await pb.collection("blog_posts").getFullList();
       setBlogPosts(records);
-      console.log("posts retreived");
       setIsLoading(false);
     };
     const getWriters = async () => {
-      console.log("getting the writers...");
       const writers = await pb.collection("authors").getFullList();
       setWriters(writers);
-      console.log("writers retreived");
     };
 
     posts();
@@ -36,12 +30,13 @@ const Home = () => {
       {blogPosts.length >= 1 && (
         <BlogList blogs={blogPosts} title={"All Blogs"} authors={writers} />
       )}
-      {/* {blogs && (
+      {blogPosts.length >= 1 && (
         <BlogList
-          blogs={blogs.filter((blog) => blog.author === "mario")}
+          blogs={blogPosts.filter((blog) => blog.writer === "2o8xf5tymn2n2a5")}
           title={"Featured Blogs"}
+          authors={writers}
         />
-      )} */}
+      )}
     </div>
   );
 };

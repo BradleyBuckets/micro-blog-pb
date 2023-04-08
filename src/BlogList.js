@@ -10,7 +10,6 @@ const BlogList = ({ blogs, title, authors }) => {
         <div className="blog-preview" key={blog.id}>
           <Link to={"/blogs/" + blog.id}>
             <h2>{blog.title}</h2>
-            {/* <p>Written by {blog.author}</p> */}
             {authors.length >= 1 && (
               <p>
                 Written by{" "}
@@ -18,7 +17,6 @@ const BlogList = ({ blogs, title, authors }) => {
               </p>
             )}
           </Link>
-          {/* <button onClick={() => handleDelete(blog.id)}>delete blog</button> */}
         </div>
       ))}
     </div>

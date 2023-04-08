@@ -22,15 +22,6 @@ const Create = () => {
     e.preventDefault();
     const blog = { title, body, author, writer };
     setIsPending(true);
-    // fetch("http://localhost:8000/blogs", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(blog),
-    // }).then(() => {
-    //   setIsPending(false);
-    //   console.log("New blog added");
-    //   history.push("/");
-    // });
     createBlog(blog);
   };
 
